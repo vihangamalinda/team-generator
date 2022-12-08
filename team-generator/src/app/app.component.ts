@@ -35,15 +35,25 @@ export class AppComponent {
   }
 
   operation() {
-    if (this.noOfTeams <= 0) {
-     console.log("No of teams should be greater than zero.")
+    if (!this.noOfTeams  || this.noOfTeams <= 0) {
+    //  console.log("No of teams should be greater than zero.")
+     this.errorMsg ="No of teams should be greater than zero.";
       return;
     }
+
+    if(this.noOfTeams >this.memberList.length){
+     this.errorMsg ="No of teams should be less than or equal to no of members.";
+      return;
+    }
+
+
+    this.errorMsg ='';
     const allMemeberArr = [...this.memberList];
     
 
     while (allMemeberArr.length != 0) {
       for (let i = 0; i < this.noOfTeams; i++) {
+        
         let randomIndex = Math.floor(Math.random() * allMemeberArr.length);
         let member = allMemeberArr.splice(randomIndex, 1)[0];
         if (!member) break;

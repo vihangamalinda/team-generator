@@ -18,16 +18,23 @@
     </div>
     <div class="generator">
       <input
-      #noOfTeamsInput 
-      type="number"
-      placeholder="# of teams"
-      (input)="InputNoOfTeamsHandler(noOfTeamsInput.value)"
+        #noOfTeamsInput
+        type="number"
+        placeholder="# of teams"
+        (input)="InputNoOfTeamsHandler(noOfTeamsInput.value)"
       />
       <button (click)="operation()">Generator</button>
     </div>
-    <div *ngIf="errorMsg"  class="error" >
-      <p class="message">{{errorMsg}}</p>
+    <div *ngIf="errorMsg" class="error">
+      <p class="message">{{ errorMsg }}</p>
     </div>
-    
+
+    <div *ngIf="teams.length" class="team-container">
+      <app-team 
+      *ngFor="let team of teams; let i =index" 
+      [team]="team" 
+      [index]="i"
+      ></app-team>
+    </div>
   </div>
 </div>

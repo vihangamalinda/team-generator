@@ -1,0 +1,9 @@
+
+    <div   class="team">
+      <h3 *ngIf="team.length">Team {{index+1}}</h3>
+      <ul   class="member-list">
+        <li *ngFor="let member of team" class="member">
+          {{member | titlecase }}
+        </li>
+      </ul>
+    </div>

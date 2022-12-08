@@ -1,6 +1,7 @@
 .box{
-    margin:2px;
- background-color: darkgrey;
+
+ border: 0.2rem solid black;
+ margin: 0.5rem;
  min-height: 150px;
  max-width: 500px;
 }
@@ -9,6 +10,8 @@
     list-style: none;
   
 }
+
+
 
 .error{
     color: crimson;
