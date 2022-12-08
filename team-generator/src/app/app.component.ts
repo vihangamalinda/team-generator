@@ -3,32 +3,60 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   title = 'team-generator';
-  newMember:string ='';
-  memberList:string[]=[];
-  errorMsg:string ='';
+  newMember: string = '';
+  memberList: string[] = [];
+  errorMsg: string = '';
+  noOfTeams: number = 0;
+  teams: string[][] = [[]];
 
-  InputHandler(val:string){
-    console.log(val);
-    this.newMember =val;
+  InputHandler(val: string) {
+    // console.log(val);
+    this.newMember = val;
   }
-   addMember() {
+
+  InputNoOfTeamsHandler(val: string) {
+    this.noOfTeams = Number(val);
+  }
+
+  addMember() {
     console.log(this.newMember.length);
-    if(this.newMember.length ==0){
+    if (this.newMember.length == 0) {
       this.errorMsg = 'Name input is empty :(';
-    return;
+      return;
     }
 
     this.memberList.push(this.newMember);
-    this.newMember ='';
-    console.log(this.memberList)
-   
-    
+    this.newMember = '';
+    // console.log(this.memberList)
   }
- 
+
+  operation() {
+    if (this.noOfTeams <= 0) {
+     console.log("No of teams should be greater than zero.")
+      return;
+    }
+    const allMemeberArr = [...this.memberList];
+    
+
+    while (allMemeberArr.length != 0) {
+      for (let i = 0; i < this.noOfTeams; i++) {
+        let randomIndex = Math.floor(Math.random() * allMemeberArr.length);
+        let member = allMemeberArr.splice(randomIndex, 1)[0];
+        if (!member) break;
+
+        if (this.teams[i]) {
+          this.teams[i].push(member);
+        } else {
+          this.teams[i] = [member];
+        }
+        console.log(randomIndex);
+      }
+    }
+
+    console.log(this.teams);
+  }
 }
-
-

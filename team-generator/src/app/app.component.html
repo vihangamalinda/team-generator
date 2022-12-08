@@ -17,11 +17,13 @@
       <button (click)="addMember()">Add</button>
     </div>
     <div class="generator">
-      <input 
+      <input
+      #noOfTeamsInput 
       type="number"
       placeholder="# of teams"
+      (input)="InputNoOfTeamsHandler(noOfTeamsInput.value)"
       />
-      <button>Generator</button>
+      <button (click)="operation()">Generator</button>
     </div>
     <div *ngIf="errorMsg"  class="error" >
       <p class="message">{{errorMsg}}</p>
