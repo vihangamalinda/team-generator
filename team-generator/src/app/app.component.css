@@ -1,0 +1,16 @@
+.box{
+    margin:2px;
+ background-color: darkgrey;
+ min-height: 150px;
+ max-width: 500px;
+}
+
+.box ul{
+    list-style: none;
+  
+}
+
+.error{
+    color: crimson;
+    size: 1.5rem;
+}
